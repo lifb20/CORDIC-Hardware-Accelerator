@@ -1,0 +1,8 @@
+{C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v} {1 {vlog -work work -stats=none {C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module CORDIC_Stage
+
+Top level modules:
+	CORDIC_Stage
+
+} {} {}}

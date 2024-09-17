@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/lifbr/Desktop/New folder (2)/simulation/modelsim
+vCORDIC_Stage
+Z1 !s110 1710762243
+!i10b 1
+!s100 BPJ89o517kR5UZ=Nn:VkV3
+IaT:INflfDngfY1lCfKNiV3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1710758880
+8C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v
+FC:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1710762243.000000
+!s107 C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@c@o@r@d@i@c_@stage
+vCORDIC_Top
+R1
+!i10b 1
+!s100 Z<anQlig1O0gFCXkkBE6K0
+IC6_<HF_5mBGk]IOhNC_Y31
+R2
+R0
+w1710761250
+8C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v
+FC:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v|
+!i113 1
+R5
+R6
+n@c@o@r@d@i@c_@top
+vtestbench_50MHz
+R1
+!i10b 1
+!s100 0T21idl?Zb:zBifGj3EfP0
+IiYe:5RG;N1?kl@fQino5U0
+R2
+R0
+w1710761260
+8C:/Users/lifbr/Desktop/New folder (2)/Bench.v
+FC:/Users/lifbr/Desktop/New folder (2)/Bench.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/lifbr/Desktop/New folder (2)/Bench.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/lifbr/Desktop/New folder (2)/Bench.v|
+!i113 1
+R5
+R6
+ntestbench_50@m@hz

@@ -1,0 +1,228 @@
+module CORDIC_Top (
+    input clk,
+    input [31:0] target,
+	 output [31:0] cos_x
+);
+
+	wire sign_intermediate[0:6];
+	wire USE_SIN_intermediate[0:6];
+	wire [32:0] angle_intermediate[0:6];
+	wire [32:0] x_intermediate[0:6];
+	wire [32:0] y_intermediate[0:6];
+	wire [32:0] target_intermediate[0:6];
+	
+	
+	reg [32:0] arctan[0:13];
+	reg [7:0] ite[0:6];
+	
+	//Offset
+	reg [32:0] x_init = 33'b01;
+	reg [32:0] y_init = 33'b001;
+	
+	//Arctan 'LUT'
+	initial begin
+		 arctan[0]  = 33'b000011111010110110111011000000000;
+		 arctan[1]  = 33'b000001111111010101101110101010000;
+		 arctan[2]  = 33'b000000111111111010101011011110000;
+		 arctan[3]  = 33'b000000011111111111010101010111000;
+		 arctan[4]  = 33'b000000001111111111111010101010110;
+		 arctan[5]  = 33'b000000000111111111111111010101011;
+		 arctan[6]  = 33'b000000000011111111111111111010110;
+		 arctan[7]  = 33'b000000000001111111111111111111011;
+		 arctan[8]  = 33'b000000000000111111111111111111111;
+		 arctan[9]  = 33'b000000000000100000000000000000000;
+		 arctan[10] = 33'b000000000000010000000000000000000;
+		 arctan[11] = 33'b000000000000001000000000000000000;
+		 arctan[12] = 33'b000000000000000100000000000000000;
+		 arctan[13] = 33'b000000000000000010000000000000000;
+	end
+	
+	//Number of shifts for each stage
+	initial begin
+		 ite[0]  = 8'b00100011;
+		 ite[1]  = 8'b01000101;
+		 ite[2]  = 8'b01100111;
+		 ite[3]  = 8'b10001001;
+		 ite[4]  = 8'b10101011;
+		 ite[5]  = 8'b11001101;
+		 ite[6]  = 8'b11101111;
+	end
+	
+	reg init_sign;
+	reg USE_SIN = 0;
+	
+	//Initialise Angles
+	//Starting angle is 26 degrees
+	reg [32:0] init_angle = 33'b000111011010110001100111000000000;
+	reg [32:0] ext_target = { 1'b0 , target};
+	reg [32:0] fin_target;
+	
+	//Determines starting sign and target angle
+	always @* begin
+		if (ext_target > init_angle) begin
+			if (ext_target > 33'b00111) begin
+				//pi/2 - target
+				fin_target = 33'b011001001000011111101101010100010 + (~ext_target + 1);
+				init_sign = 1;
+				//sin(pi/2-target) = cos(target) for angles > pi/4
+				USE_SIN = 1;
+			end else begin
+				init_sign = 1;
+				fin_target = ext_target;
+			end
+		end
+		else begin
+			init_sign = 0;
+			fin_target = ext_target;
+		end
+	end
+
+	// Stage 1
+	CORDIC_Stage stage1(
+		 .clk(clk),
+		 .sign_in(init_sign),
+		 .USE_SIN_in(USE_SIN),
+		 .ite(ite[0]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[0]),
+		 .arctan_in_2(arctan[1]),
+		 .curr_angle_in(init_angle),
+		 .x_in(x_init),
+		 .y_in(y_init),
+		 .sign_out(sign_intermediate[0]),
+		 .curr_angle_out(angle_intermediate[0]),
+		 .x_out(x_intermediate[0]),
+		 .y_out(y_intermediate[0]),
+		 .target_out(target_intermediate[0]),
+		 .USE_SIN_out(USE_SIN_intermediate[0])
+	);
+
+	// Stage 2
+	CORDIC_Stage stage2(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[0]),
+		 .USE_SIN_in(USE_SIN_intermediate[0]),
+		 .ite(ite[1]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[2]),
+		 .arctan_in_2(arctan[3]),
+		 .curr_angle_in(angle_intermediate[0]),
+		 .x_in(x_intermediate[0]),
+		 .y_in(y_intermediate[0]),
+		 .sign_out(sign_intermediate[1]),
+		 .curr_angle_out(angle_intermediate[1]),
+		 .x_out(x_intermediate[1]),
+		 .y_out(y_intermediate[1]),
+		 .target_out(target_intermediate[1]),
+		 .USE_SIN_out(USE_SIN_intermediate[1])
+	);
+	
+	// Stage 3
+	CORDIC_Stage stage3(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[1]),
+		 .USE_SIN_in(USE_SIN_intermediate[1]),
+		 .ite(ite[2]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[4]),
+		 .arctan_in_2(arctan[5]),
+		 .curr_angle_in(angle_intermediate[1]),
+		 .x_in(x_intermediate[1]),
+		 .y_in(y_intermediate[1]),
+		 .sign_out(sign_intermediate[2]),
+		 .curr_angle_out(angle_intermediate[2]),
+		 .x_out(x_intermediate[2]),
+		 .y_out(y_intermediate[2]),
+		 .target_out(target_intermediate[2]),
+		 .USE_SIN_out(USE_SIN_intermediate[2])
+	);
+	
+	// Stage 4
+	CORDIC_Stage stage4(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[2]),
+		 .USE_SIN_in(USE_SIN_intermediate[2]),
+		 .ite(ite[3]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[6]),
+		 .arctan_in_2(arctan[7]),
+		 .curr_angle_in(angle_intermediate[2]),
+		 .x_in(x_intermediate[2]),
+		 .y_in(y_intermediate[2]),
+		 .sign_out(sign_intermediate[3]),
+		 .curr_angle_out(angle_intermediate[3]),
+		 .x_out(x_intermediate[3]),
+		 .y_out(y_intermediate[3]),
+		 .target_out(target_intermediate[3]),
+		 .USE_SIN_out(USE_SIN_intermediate[3])
+	);
+	
+	// Stage 5
+	CORDIC_Stage stage5(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[3]),
+		 .USE_SIN_in(USE_SIN_intermediate[3]),
+		 .ite(ite[4]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[8]),
+		 .arctan_in_2(arctan[9]),
+		 .curr_angle_in(angle_intermediate[3]),
+		 .x_in(x_intermediate[3]),
+		 .y_in(y_intermediate[3]),
+		 .sign_out(sign_intermediate[4]),
+		 .curr_angle_out(angle_intermediate[4]),
+		 .x_out(x_intermediate[4]),
+		 .y_out(y_intermediate[4]),
+		 .target_out(target_intermediate[4]),
+		 .USE_SIN_out(USE_SIN_intermediate[4])
+	);
+	
+	// Stage 6
+	CORDIC_Stage stage6(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[4]),
+		 .USE_SIN_in(USE_SIN_intermediate[4]),
+		 .ite(ite[5]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[10]),
+		 .arctan_in_2(arctan[11]),
+		 .curr_angle_in(angle_intermediate[4]),
+		 .x_in(x_intermediate[4]),
+		 .y_in(y_intermediate[4]),
+		 .sign_out(sign_intermediate[5]),
+		 .curr_angle_out(angle_intermediate[5]),
+		 .x_out(x_intermediate[5]),
+		 .y_out(y_intermediate[5]),
+		 .target_out(target_intermediate[5]),
+		 .USE_SIN_out(USE_SIN_intermediate[5])
+	);
+	
+	// Stage 7
+	CORDIC_Stage stage7(
+		 .clk(clk),
+		 .sign_in(sign_intermediate[5]),
+		 .USE_SIN_in(USE_SIN_intermediate[5]),
+		 .ite(ite[6]),
+		 .target(fin_target),
+		 .arctan_in_1(arctan[12]),
+		 .arctan_in_2(arctan[13]),
+		 .curr_angle_in(angle_intermediate[5]),
+		 .x_in(x_intermediate[5]),
+		 .y_in(y_intermediate[5]),
+		 .sign_out(sign_intermediate[6]),
+		 .curr_angle_out(angle_intermediate[6]),
+		 .x_out(x_intermediate[6]),
+		 .y_out(y_intermediate[6]),
+		 .target_out(target_intermediate[6]),
+		 .USE_SIN_out(USE_SIN_intermediate[6])
+	);
+	
+	reg [31:0] K = 32'b01101101111011001010110110001011;
+	
+	assign cos_x = USE_SIN_intermediate[6] ? y_intermediate[6][31:0]*K : x_intermediate[6][31:0]*K;
+	
+	
+	
+	
+
+endmodule

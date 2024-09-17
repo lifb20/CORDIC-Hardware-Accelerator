@@ -1,0 +1,709 @@
+Analysis & Synthesis report for CORDIC
+Mon Mar 18 17:33:20 2024
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis DSP Block Usage Summary
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Port Connectivity Checks: "CORDIC_Stage:stage7"
+ 13. Port Connectivity Checks: "CORDIC_Stage:stage6"
+ 14. Port Connectivity Checks: "CORDIC_Stage:stage5"
+ 15. Port Connectivity Checks: "CORDIC_Stage:stage4"
+ 16. Port Connectivity Checks: "CORDIC_Stage:stage3"
+ 17. Port Connectivity Checks: "CORDIC_Stage:stage2"
+ 18. Port Connectivity Checks: "CORDIC_Stage:stage1"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Mar 18 17:33:20 2024       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; CORDIC                                      ;
+; Top-level Entity Name           ; CORDIC_Top                                  ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 472                                         ;
+; Total pins                      ; 65                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 2                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; CORDIC_Top         ; CORDIC             ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                       ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                         ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------+---------+
+; CORDIC_Top.v                     ; yes             ; User Verilog HDL File  ; C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v   ;         ;
+; CORDIC_Stage.v                   ; yes             ; User Verilog HDL File  ; C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimate of Logic utilization (ALMs needed) ; 616       ;
+;                                             ;           ;
+; Combinational ALUT usage for logic          ; 1146      ;
+;     -- 7 input functions                    ; 0         ;
+;     -- 6 input functions                    ; 73        ;
+;     -- 5 input functions                    ; 45        ;
+;     -- 4 input functions                    ; 250       ;
+;     -- <=3 input functions                  ; 778       ;
+;                                             ;           ;
+; Dedicated logic registers                   ; 472       ;
+;                                             ;           ;
+; I/O pins                                    ; 65        ;
+;                                             ;           ;
+; Total DSP Blocks                            ; 2         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 472       ;
+; Total fan-out                               ; 5422      ;
+; Average fan-out                             ; 3.10      ;
++---------------------------------------------+-----------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                 ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name             ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------+--------------+--------------+
+; |CORDIC_Top                ; 1146 (96)           ; 472 (0)                   ; 0                 ; 2          ; 65   ; 0            ; |CORDIC_Top                     ; CORDIC_Top   ; work         ;
+;    |CORDIC_Stage:stage1|   ; 76 (76)             ; 45 (45)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage1 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage2|   ; 90 (90)             ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage2 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage3|   ; 182 (182)           ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage3 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage4|   ; 182 (182)           ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage4 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage5|   ; 182 (182)           ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage5 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage6|   ; 182 (182)           ; 79 (79)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage6 ; CORDIC_Stage ; work         ;
+;    |CORDIC_Stage:stage7|   ; 156 (156)           ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |CORDIC_Top|CORDIC_Stage:stage7 ; CORDIC_Stage ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary  ;
++---------------------------------+-------------+
+; Statistic                       ; Number Used ;
++---------------------------------+-------------+
+; Two Independent 18x18           ; 1           ;
+; Sum of two 18x18                ; 1           ;
+; Total number of DSP blocks      ; 2           ;
+;                                 ;             ;
+; Fixed Point Unsigned Multiplier ; 3           ;
++---------------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                              ;
++------------------------------------------+------------------------------------------------------+
+; Register name                            ; Reason for Removal                                   ;
++------------------------------------------+------------------------------------------------------+
+; CORDIC_Stage:stage7|x[1][31]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][30]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][29]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][28]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][27]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][26]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][25]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][24]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][23]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][22]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][21]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][20]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][19]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][18]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][17]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][16]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][15]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][14]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][13]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][12]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][11]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][10]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][9]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][8]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][7]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][6]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][5]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][4]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][3]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][2]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][1]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage7|x[1][0]              ; Lost fanout                                          ;
+; CORDIC_Stage:stage1|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage6|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage2|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][4]  ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][3]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][2]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][1]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][0]  ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage5|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage4|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage4|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage3|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage3|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage2|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage2|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage1|y[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage1|x[1][32]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage6|current_angle[1][7]  ; Merged with CORDIC_Stage:stage6|current_angle[1][5]  ;
+; CORDIC_Stage:stage6|current_angle[1][9]  ; Merged with CORDIC_Stage:stage6|current_angle[1][5]  ;
+; CORDIC_Stage:stage6|current_angle[1][8]  ; Merged with CORDIC_Stage:stage6|current_angle[1][6]  ;
+; CORDIC_Stage:stage5|current_angle[1][7]  ; Merged with CORDIC_Stage:stage5|current_angle[1][5]  ;
+; CORDIC_Stage:stage5|current_angle[1][9]  ; Merged with CORDIC_Stage:stage5|current_angle[1][5]  ;
+; CORDIC_Stage:stage5|current_angle[1][8]  ; Merged with CORDIC_Stage:stage5|current_angle[1][6]  ;
+; CORDIC_Stage:stage4|current_angle[1][7]  ; Merged with CORDIC_Stage:stage4|current_angle[1][5]  ;
+; CORDIC_Stage:stage4|current_angle[1][9]  ; Merged with CORDIC_Stage:stage4|current_angle[1][5]  ;
+; CORDIC_Stage:stage4|current_angle[1][8]  ; Merged with CORDIC_Stage:stage4|current_angle[1][6]  ;
+; CORDIC_Stage:stage3|current_angle[1][7]  ; Merged with CORDIC_Stage:stage3|current_angle[1][5]  ;
+; CORDIC_Stage:stage3|current_angle[1][9]  ; Merged with CORDIC_Stage:stage3|current_angle[1][5]  ;
+; CORDIC_Stage:stage3|current_angle[1][8]  ; Merged with CORDIC_Stage:stage3|current_angle[1][6]  ;
+; CORDIC_Stage:stage2|current_angle[1][7]  ; Merged with CORDIC_Stage:stage2|current_angle[1][5]  ;
+; CORDIC_Stage:stage2|current_angle[1][9]  ; Merged with CORDIC_Stage:stage2|current_angle[1][5]  ;
+; CORDIC_Stage:stage2|current_angle[1][8]  ; Merged with CORDIC_Stage:stage2|current_angle[1][6]  ;
+; CORDIC_Stage:stage1|current_angle[1][7]  ; Merged with CORDIC_Stage:stage1|current_angle[1][5]  ;
+; CORDIC_Stage:stage1|current_angle[1][9]  ; Merged with CORDIC_Stage:stage1|current_angle[1][5]  ;
+; CORDIC_Stage:stage1|current_angle[1][8]  ; Merged with CORDIC_Stage:stage1|current_angle[1][6]  ;
+; CORDIC_Stage:stage1|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][27] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][28] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][32] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage1|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage2|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage3|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage4|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][15] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][31] ; Stuck at GND due to stuck port data_in               ;
+; CORDIC_Stage:stage5|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][13] ; Stuck at VCC due to stuck port data_in               ;
+; CORDIC_Stage:stage6|current_angle[1][6]  ; Merged with CORDIC_Stage:stage6|current_angle[1][29] ;
+; CORDIC_Stage:stage6|current_angle[1][30] ; Merged with CORDIC_Stage:stage6|current_angle[1][16] ;
+; CORDIC_Stage:stage6|current_angle[1][22] ; Merged with CORDIC_Stage:stage6|current_angle[1][10] ;
+; CORDIC_Stage:stage6|current_angle[1][25] ; Merged with CORDIC_Stage:stage6|current_angle[1][23] ;
+; CORDIC_Stage:stage6|current_angle[1][5]  ; Merged with CORDIC_Stage:stage6|current_angle[1][14] ;
+; CORDIC_Stage:stage5|current_angle[1][6]  ; Merged with CORDIC_Stage:stage5|current_angle[1][29] ;
+; CORDIC_Stage:stage5|current_angle[1][30] ; Merged with CORDIC_Stage:stage5|current_angle[1][16] ;
+; CORDIC_Stage:stage5|current_angle[1][22] ; Merged with CORDIC_Stage:stage5|current_angle[1][10] ;
+; CORDIC_Stage:stage5|current_angle[1][25] ; Merged with CORDIC_Stage:stage5|current_angle[1][23] ;
+; CORDIC_Stage:stage5|current_angle[1][5]  ; Merged with CORDIC_Stage:stage5|current_angle[1][14] ;
+; CORDIC_Stage:stage4|current_angle[1][6]  ; Merged with CORDIC_Stage:stage4|current_angle[1][29] ;
+; CORDIC_Stage:stage4|current_angle[1][30] ; Merged with CORDIC_Stage:stage4|current_angle[1][16] ;
+; CORDIC_Stage:stage4|current_angle[1][22] ; Merged with CORDIC_Stage:stage4|current_angle[1][10] ;
+; CORDIC_Stage:stage4|current_angle[1][25] ; Merged with CORDIC_Stage:stage4|current_angle[1][23] ;
+; CORDIC_Stage:stage4|current_angle[1][5]  ; Merged with CORDIC_Stage:stage4|current_angle[1][14] ;
+; CORDIC_Stage:stage3|current_angle[1][6]  ; Merged with CORDIC_Stage:stage3|current_angle[1][29] ;
+; CORDIC_Stage:stage3|current_angle[1][30] ; Merged with CORDIC_Stage:stage3|current_angle[1][16] ;
+; CORDIC_Stage:stage3|current_angle[1][22] ; Merged with CORDIC_Stage:stage3|current_angle[1][10] ;
+; CORDIC_Stage:stage3|current_angle[1][25] ; Merged with CORDIC_Stage:stage3|current_angle[1][23] ;
+; CORDIC_Stage:stage3|current_angle[1][5]  ; Merged with CORDIC_Stage:stage3|current_angle[1][14] ;
+; CORDIC_Stage:stage2|current_angle[1][6]  ; Merged with CORDIC_Stage:stage2|current_angle[1][29] ;
+; CORDIC_Stage:stage2|current_angle[1][30] ; Merged with CORDIC_Stage:stage2|current_angle[1][16] ;
+; CORDIC_Stage:stage2|current_angle[1][22] ; Merged with CORDIC_Stage:stage2|current_angle[1][10] ;
+; CORDIC_Stage:stage2|current_angle[1][25] ; Merged with CORDIC_Stage:stage2|current_angle[1][23] ;
+; CORDIC_Stage:stage2|current_angle[1][5]  ; Merged with CORDIC_Stage:stage2|current_angle[1][14] ;
+; CORDIC_Stage:stage1|current_angle[1][6]  ; Merged with CORDIC_Stage:stage1|current_angle[1][29] ;
+; CORDIC_Stage:stage1|current_angle[1][30] ; Merged with CORDIC_Stage:stage1|current_angle[1][16] ;
+; CORDIC_Stage:stage1|current_angle[1][22] ; Merged with CORDIC_Stage:stage1|current_angle[1][10] ;
+; CORDIC_Stage:stage1|current_angle[1][25] ; Merged with CORDIC_Stage:stage1|current_angle[1][23] ;
+; CORDIC_Stage:stage1|y[1][0]              ; Merged with CORDIC_Stage:stage1|x[1][0]              ;
+; CORDIC_Stage:stage1|y[1][1]              ; Merged with CORDIC_Stage:stage1|x[1][1]              ;
+; CORDIC_Stage:stage1|y[1][2]              ; Merged with CORDIC_Stage:stage1|x[1][2]              ;
+; CORDIC_Stage:stage1|y[1][3]              ; Merged with CORDIC_Stage:stage1|x[1][3]              ;
+; CORDIC_Stage:stage1|y[1][4]              ; Merged with CORDIC_Stage:stage1|x[1][4]              ;
+; CORDIC_Stage:stage1|y[1][5]              ; Merged with CORDIC_Stage:stage1|x[1][5]              ;
+; CORDIC_Stage:stage1|y[1][6]              ; Merged with CORDIC_Stage:stage1|x[1][6]              ;
+; CORDIC_Stage:stage1|y[1][7]              ; Merged with CORDIC_Stage:stage1|x[1][7]              ;
+; CORDIC_Stage:stage1|y[1][8]              ; Merged with CORDIC_Stage:stage1|x[1][8]              ;
+; CORDIC_Stage:stage1|y[1][9]              ; Merged with CORDIC_Stage:stage1|x[1][9]              ;
+; CORDIC_Stage:stage1|y[1][10]             ; Merged with CORDIC_Stage:stage1|x[1][10]             ;
+; CORDIC_Stage:stage1|y[1][11]             ; Merged with CORDIC_Stage:stage1|x[1][11]             ;
+; CORDIC_Stage:stage1|y[1][12]             ; Merged with CORDIC_Stage:stage1|x[1][12]             ;
+; CORDIC_Stage:stage1|y[1][13]             ; Merged with CORDIC_Stage:stage1|x[1][13]             ;
+; CORDIC_Stage:stage1|y[1][14]             ; Merged with CORDIC_Stage:stage1|x[1][14]             ;
+; CORDIC_Stage:stage1|y[1][15]             ; Merged with CORDIC_Stage:stage1|x[1][15]             ;
+; CORDIC_Stage:stage1|y[1][16]             ; Merged with CORDIC_Stage:stage1|x[1][16]             ;
+; CORDIC_Stage:stage1|y[1][17]             ; Merged with CORDIC_Stage:stage1|x[1][17]             ;
+; CORDIC_Stage:stage1|y[1][18]             ; Merged with CORDIC_Stage:stage1|x[1][18]             ;
+; CORDIC_Stage:stage1|y[1][19]             ; Merged with CORDIC_Stage:stage1|x[1][19]             ;
+; CORDIC_Stage:stage1|y[1][20]             ; Merged with CORDIC_Stage:stage1|x[1][20]             ;
+; CORDIC_Stage:stage1|y[1][21]             ; Merged with CORDIC_Stage:stage1|x[1][21]             ;
+; CORDIC_Stage:stage1|y[1][22]             ; Merged with CORDIC_Stage:stage1|x[1][22]             ;
+; CORDIC_Stage:stage1|y[1][23]             ; Merged with CORDIC_Stage:stage1|x[1][23]             ;
+; CORDIC_Stage:stage1|y[1][24]             ; Merged with CORDIC_Stage:stage1|x[1][24]             ;
+; CORDIC_Stage:stage1|y[1][25]             ; Merged with CORDIC_Stage:stage1|x[1][25]             ;
+; CORDIC_Stage:stage1|y[1][26]             ; Merged with CORDIC_Stage:stage1|x[1][26]             ;
+; CORDIC_Stage:stage1|y[1][27]             ; Merged with CORDIC_Stage:stage1|x[1][27]             ;
+; CORDIC_Stage:stage1|y[1][28]             ; Merged with CORDIC_Stage:stage1|x[1][28]             ;
+; CORDIC_Stage:stage1|y[1][29]             ; Merged with CORDIC_Stage:stage1|x[1][29]             ;
+; CORDIC_Stage:stage1|y[1][30]             ; Merged with CORDIC_Stage:stage1|x[1][30]             ;
+; CORDIC_Stage:stage1|y[1][31]             ; Merged with CORDIC_Stage:stage1|x[1][31]             ;
+; CORDIC_Stage:stage1|current_angle[1][5]  ; Merged with CORDIC_Stage:stage1|current_angle[1][14] ;
+; CORDIC_Stage:stage1|x[1][31]             ; Lost fanout                                          ;
+; CORDIC_Stage:stage1|x[1][30]             ; Lost fanout                                          ;
+; Total Number of Removed Registers = 192  ;                                                      ;
++------------------------------------------+------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                                ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; Register name                            ; Reason for Removal        ; Registers Removed due to This Register                                              ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+; CORDIC_Stage:stage1|current_angle[1][4]  ; Stuck at VCC              ; CORDIC_Stage:stage2|current_angle[1][4], CORDIC_Stage:stage3|current_angle[1][4],   ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][4], CORDIC_Stage:stage5|current_angle[1][4],   ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][4], CORDIC_Stage:stage5|x[1][32],              ;
+;                                          ;                           ; CORDIC_Stage:stage4|x[1][32], CORDIC_Stage:stage3|x[1][32],                         ;
+;                                          ;                           ; CORDIC_Stage:stage2|x[1][32], CORDIC_Stage:stage1|x[1][32],                         ;
+;                                          ;                           ; CORDIC_Stage:stage1|x[1][31]                                                        ;
+; CORDIC_Stage:stage1|current_angle[1][3]  ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][3], CORDIC_Stage:stage3|current_angle[1][3],   ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][3], CORDIC_Stage:stage5|current_angle[1][3],   ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][3]                                             ;
+; CORDIC_Stage:stage1|current_angle[1][2]  ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][2], CORDIC_Stage:stage3|current_angle[1][2],   ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][2], CORDIC_Stage:stage5|current_angle[1][2],   ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][2]                                             ;
+; CORDIC_Stage:stage1|current_angle[1][1]  ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][1], CORDIC_Stage:stage3|current_angle[1][1],   ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][1], CORDIC_Stage:stage5|current_angle[1][1],   ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][1]                                             ;
+; CORDIC_Stage:stage1|current_angle[1][0]  ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][0], CORDIC_Stage:stage3|current_angle[1][0],   ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][0], CORDIC_Stage:stage5|current_angle[1][0],   ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][0]                                             ;
+; CORDIC_Stage:stage1|current_angle[1][27] ; Stuck at VCC              ; CORDIC_Stage:stage2|current_angle[1][27], CORDIC_Stage:stage3|current_angle[1][27], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][27], CORDIC_Stage:stage5|current_angle[1][27], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][27]                                            ;
+; CORDIC_Stage:stage1|current_angle[1][28] ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][28], CORDIC_Stage:stage3|current_angle[1][28], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][28], CORDIC_Stage:stage5|current_angle[1][28], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][28]                                            ;
+; CORDIC_Stage:stage1|current_angle[1][32] ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][32], CORDIC_Stage:stage3|current_angle[1][32], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][32], CORDIC_Stage:stage5|current_angle[1][32], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][32]                                            ;
+; CORDIC_Stage:stage1|current_angle[1][15] ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][15], CORDIC_Stage:stage3|current_angle[1][15], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][15], CORDIC_Stage:stage5|current_angle[1][15], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][15]                                            ;
+; CORDIC_Stage:stage1|current_angle[1][31] ; Stuck at GND              ; CORDIC_Stage:stage2|current_angle[1][31], CORDIC_Stage:stage3|current_angle[1][31], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][31], CORDIC_Stage:stage5|current_angle[1][31], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][31]                                            ;
+; CORDIC_Stage:stage1|current_angle[1][13] ; Stuck at VCC              ; CORDIC_Stage:stage2|current_angle[1][13], CORDIC_Stage:stage3|current_angle[1][13], ;
+;                                          ; due to stuck port data_in ; CORDIC_Stage:stage4|current_angle[1][13], CORDIC_Stage:stage5|current_angle[1][13], ;
+;                                          ;                           ; CORDIC_Stage:stage6|current_angle[1][13]                                            ;
+; CORDIC_Stage:stage7|x[1][31]             ; Lost Fanouts              ; CORDIC_Stage:stage6|y[1][32]                                                        ;
++------------------------------------------+---------------------------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 472   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage7"                                                                                                                                   ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                                                                                      ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; sign_out       ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; curr_angle_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; x_out[32]      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; y_out[32]      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; target_out     ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; rst            ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage6"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage5"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage4"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage3"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage2"                                                                                                                        ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                                                                                      ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; rst  ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CORDIC_Stage:stage1"                                                                                                                                         ;
++-----------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port                  ; Type  ; Severity ; Details                                                                                                                                      ;
++-----------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; USE_SIN_in            ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; ite[1..0]             ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; ite[7..6]             ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; ite[4..2]             ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; ite[5]                ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[28..24]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[20..19]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[17..16]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[14..12]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[10..9]    ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[32..29]   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[8..0]     ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[23]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[22]       ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_1[21]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[18]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[15]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_1[11]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[27..21]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[15..14]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[12..10]   ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[32..28]   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[3..0]     ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[20]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[19]       ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[18]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[17]       ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[16]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[13]       ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[9]        ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[8]        ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[7]        ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[6]        ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; arctan_in_2[5]        ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; arctan_in_2[4]        ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[29..27] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[25..24] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[20..19] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[15..14] ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[11..9]  ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[32..30] ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[18..16] ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[13..12] ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[8..0]   ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[26]     ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[23]     ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; curr_angle_in[22]     ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; curr_angle_in[21]     ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; x_in[32..1]           ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; x_in[0]               ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; y_in[32..1]           ; Input ; Info     ; Stuck at GND                                                                                                                                 ;
+; y_in[0]               ; Input ; Info     ; Stuck at VCC                                                                                                                                 ;
+; rst                   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
++-----------------------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 472                         ;
+;     plain             ; 472                         ;
+; arriav_lcell_comb     ; 1146                        ;
+;     arith             ; 141                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 32                          ;
+;         2 data inputs ; 71                          ;
+;         4 data inputs ; 36                          ;
+;     normal            ; 366                         ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 112                         ;
+;         3 data inputs ; 78                          ;
+;         4 data inputs ; 54                          ;
+;         5 data inputs ; 45                          ;
+;         6 data inputs ; 73                          ;
+;     shared            ; 639                         ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 158                         ;
+;         3 data inputs ; 320                         ;
+;         4 data inputs ; 160                         ;
+; arriav_mac            ; 2                           ;
+; boundary_port         ; 65                          ;
+;                       ;                             ;
+; Max LUT depth         ; 13.40                       ;
+; Average LUT depth     ; 8.69                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:02:54     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Mon Mar 18 17:30:15 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CORDIC -c CORDIC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file cordic_top.v
+    Info (12023): Found entity 1: CORDIC_Top File: C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file cordic_stage.v
+    Info (12023): Found entity 1: CORDIC_Stage File: C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Stage.v Line: 1
+Info (12127): Elaborating entity "CORDIC_Top" for the top level hierarchy
+Warning (10240): Verilog HDL Always Construct warning at CORDIC_Top.v(63): inferring latch(es) for variable "USE_SIN", which holds its previous value in one or more paths through the always construct File: C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v Line: 63
+Info (10041): Inferred latch for "USE_SIN" at CORDIC_Top.v(77) File: C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v Line: 77
+Info (12128): Elaborating entity "CORDIC_Stage" for hierarchy "CORDIC_Stage:stage1" File: C:/Users/lifbr/Desktop/New folder (2)/CORDIC_Top.v Line: 100
+Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 46 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 1358 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 33 input pins
+    Info (21059): Implemented 32 output pins
+    Info (21061): Implemented 1291 logic cells
+    Info (21062): Implemented 2 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4866 megabytes
+    Info: Processing ended: Mon Mar 18 17:33:20 2024
+    Info: Elapsed time: 00:03:05
+    Info: Total CPU time (on all processors): 00:01:40
+
+

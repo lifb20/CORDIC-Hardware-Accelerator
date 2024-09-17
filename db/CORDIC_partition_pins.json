@@ -1,0 +1,269 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "cos_x[0]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[1]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[2]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[3]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[4]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[5]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[6]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[7]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[8]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[9]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[10]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[11]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[12]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[13]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[14]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[15]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[16]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[17]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[18]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[19]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[20]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[21]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[22]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[23]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[24]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[25]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[26]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[27]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[28]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[29]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[30]",
+					"strict" : false
+				},
+				{
+					"name" : "cos_x[31]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "target[31]",
+					"strict" : false
+				},
+				{
+					"name" : "target[30]",
+					"strict" : false
+				},
+				{
+					"name" : "target[29]",
+					"strict" : false
+				},
+				{
+					"name" : "target[8]",
+					"strict" : false
+				},
+				{
+					"name" : "target[7]",
+					"strict" : false
+				},
+				{
+					"name" : "target[6]",
+					"strict" : false
+				},
+				{
+					"name" : "target[5]",
+					"strict" : false
+				},
+				{
+					"name" : "target[4]",
+					"strict" : false
+				},
+				{
+					"name" : "target[3]",
+					"strict" : false
+				},
+				{
+					"name" : "target[2]",
+					"strict" : false
+				},
+				{
+					"name" : "target[1]",
+					"strict" : false
+				},
+				{
+					"name" : "target[0]",
+					"strict" : false
+				},
+				{
+					"name" : "target[15]",
+					"strict" : false
+				},
+				{
+					"name" : "target[14]",
+					"strict" : false
+				},
+				{
+					"name" : "target[11]",
+					"strict" : false
+				},
+				{
+					"name" : "target[10]",
+					"strict" : false
+				},
+				{
+					"name" : "target[9]",
+					"strict" : false
+				},
+				{
+					"name" : "target[13]",
+					"strict" : false
+				},
+				{
+					"name" : "target[12]",
+					"strict" : false
+				},
+				{
+					"name" : "target[18]",
+					"strict" : false
+				},
+				{
+					"name" : "target[17]",
+					"strict" : false
+				},
+				{
+					"name" : "target[16]",
+					"strict" : false
+				},
+				{
+					"name" : "target[22]",
+					"strict" : false
+				},
+				{
+					"name" : "target[20]",
+					"strict" : false
+				},
+				{
+					"name" : "target[19]",
+					"strict" : false
+				},
+				{
+					"name" : "target[28]",
+					"strict" : false
+				},
+				{
+					"name" : "target[27]",
+					"strict" : false
+				},
+				{
+					"name" : "target[25]",
+					"strict" : false
+				},
+				{
+					"name" : "target[24]",
+					"strict" : false
+				},
+				{
+					"name" : "target[23]",
+					"strict" : false
+				},
+				{
+					"name" : "target[21]",
+					"strict" : false
+				},
+				{
+					"name" : "target[26]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
